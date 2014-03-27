@@ -1,7 +1,3 @@
-"""
-To be used as the main of the program, currently being used to test pygame functionalities
-"""
-
 import pygame
 
 BLACK = ( 0, 0, 0)
@@ -21,16 +17,22 @@ done = False
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
-fill.screen(BLACK)
+screen.fill(BLACK)
 #flip function makes pygame actually draw the changes
 pygame.display.flip()
 
 block_type='sand'
 
-pos = pygame.mouse.get_pos()
+mpos = pygame.mouse.get_pos()
 
-class grid:
-
+class grid(screen_size):
+    def __init__(self, screen_size):
+        y = screen_size[1]
+        x = screen_size[0]
+        for j in range(y):
+            for i in range(x):
+                self.pos[x,y].block = None
+                self.pos[x,y].update = 0
 
 
 # -------- Main Program Loop -----------
@@ -39,23 +41,17 @@ while not done:
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT: # If user clicked close
             done = True # Flag that we are done so we exit this loop
-        elif event.type == pygame.MOUSEBUTTONDOWN
-            if event.button == 0
-                print(0)
-            elif event.button == 1
-                print(1)
-            elif event.button == 2
-                print(2)
-            elif event.button == 3
-                print(3)
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                place_block(mpos, block_type, grid)
+            elif event.button == 3:
+                remove_block(mpos, grid)
+        #if event.type == pygame.K_b
+
+    update(grid)
             
-            #place_block(pos, block_type, grid)
-        #elif event.type == pygame.
-        # ALL EVENT PROCESSING SHOULD GO ABOVE THIS COMMENT
-        # ALL GAME LOGIC SHOULD GO BELOW THIS COMMENT
-        # ALL GAME LOGIC SHOULD GO ABOVE THIS COMMENT
-        # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
-        # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
+    mpos = pygame.mouse.get_pos()
+
         # Limit to 60 frames per second
         clock.tick(60)
 
