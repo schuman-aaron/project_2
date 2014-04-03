@@ -13,13 +13,10 @@ def update(the_grid, screen, update_pos):
             y=update_pos[i][1]
             #if marked for being sand
             if the_grid.pos[x][y].block == 'Sand':
-                #despite the screen is black at that point
-                if tuple(screen.get_at((x,y)))==(0,0,0,255):
-                    #draw the sand block
-                    screen.set_at((x,y), TAN)
-                else:
-                    pass
-                    #sandphysics(the_grid, screen, update_pos), change the position in update pos if moved; that way even if it does move it will not be recounted
+                pass
+                #sandphysics(the_grid, screen, update_pos[i]), change the position in update pos if moved; that way even if it does move it will not be recounted
+            elif the_grid.pos[x][y].block == 'None':
+                temp=update_pos.pop()
             else: #elif the_grid.pos[x][y].block == 'Block', similar to above
                 pass
                 
