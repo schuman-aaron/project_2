@@ -9,4 +9,5 @@ def place_blocks(mpos, block_type, the_grid, update_pos):
         #set density
         if the_grid.pos[mpos[0]][mpos[1]].block == 'Sand':
             the_grid.pos[mpos[0]][mpos[1]].density == 1
+            screen.set_at((x,y), TAN)
     return update_pos
