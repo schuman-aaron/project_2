@@ -12,7 +12,7 @@ def update(the_grid, screen, update_pos):
             if the_grid.pos[x][y].block == 'Sand':
                 #update each individual positions of sand blocks
                 alt_update_pos=sandphysics(the_grid, screen, update_pos[i])
-                if alt_update_pos == None
+                if alt_update_pos == None:
                     remove_update_pos += update_pos[i]
                 new_update_pos+=alt_update_pos
             #don't bother updating nothing
