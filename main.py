@@ -58,7 +58,7 @@ the_grid = grid(size,screen, GREY)
 mouse_down1 = 0
 mouse_down2 = 0
 #store the position of the block that has been changed or could be, here
-update_pos = list()
+update_pos = set()
 
 
 # -------- Main Program Loop -----------
@@ -80,13 +80,13 @@ while not done:
             mouse_down1 = 0
         #left mouse button is being held down
         if mouse_down1 == 1:
-            update_pos = place_blocks(mpos, block_type, the_grid, update_pos, screen)
+            update_pos.add(place_blocks(mpos, block_type, the_grid, screen))
         #check to see if the user released the right mouse button
         if event.type == pygame.MOUSEBUTTONUP and mouse_down2 == 1:
             mouse_down2 = 0
         #right mouse button is being held down
         if mouse_down2 == 1:
-            update_pos = remove_blocks(mpos, the_grid, update_pos, screen)
+            remove_blocks(mpos, the_grid, screen)
         #illegal mouse operation, reset left and right mouse button is down variables
         #note: without this placing blocks would become slower and slower 
         #each time the operation is executed
@@ -100,7 +100,7 @@ while not done:
             else:
                 block_type = 'Sand'
     #update function
-    update_pos = update(the_grid, screen, update_pos)           
+    update(the_grid, screen, update_pos)           
 
     # Limit to 60 frames per second
     clock.tick(600)

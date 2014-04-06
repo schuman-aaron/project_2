@@ -7,7 +7,7 @@ RED = ( 255, 0, 0)
 TAN = (250, 230, 140)
 GREY = (200,200,200)
 
-def remove_blocks(mpos, the_grid, update_pos, screen):
+def remove_blocks(mpos, the_grid, screen):
     x = mpos[0]
     y = mpos[1]
     #the position the user clicked on is not empty and within boundary
@@ -15,11 +15,11 @@ def remove_blocks(mpos, the_grid, update_pos, screen):
         #that position now contains nothing
         the_grid.pos[x][y].block = 'None'
         #change in block type could require updating of other blocks
+        """
         update_pos.append([x,y-1])
         update_pos.append([x+1,y-1])
-        update_pos.append([x-1,y-1])
+        update_pos.append([x-1,y-1])"""
         #set density
         the_grid.pos[x][y].density = 0
         #change color
         screen.set_at((x,y), BLACK)
-    return update_pos

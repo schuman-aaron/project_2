@@ -14,8 +14,13 @@ def sandphysics(grid, screen, point):
     if not possible_x_points:
         return None
 
+    
     #temp_list = list()    
     #remove original point first
+    remove_blocks((point[0], point[1]), grid, screen)
+    
     x += random.choice(possible_x_points)
-    #temp = place_blocks([x,y],'Sand', grid, temp_list, screen)
-    return [[x, y]]
+
+    
+    place_blocks((x, y),'Sand', grid, screen)
+    return (x, y)
