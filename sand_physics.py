@@ -8,7 +8,7 @@ def sandphysics(grid, screen, point):
     possible_x_points = []
 
     for i in range(3):
-        if grid.pos[x + i][y].block != 'None':
+        if grid.pos[x + i][y].block == 'None':
             possible_x_points.append(i)
 
     if not possible_x_points:
