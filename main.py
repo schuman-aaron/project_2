@@ -80,7 +80,9 @@ while not done:
             mouse_down1 = 0
         #left mouse button is being held down
         if mouse_down1 == 1:
-            update_pos.add(place_blocks(mpos, block_type, the_grid, screen))
+            new_block = place_blocks(mpos, block_type, the_grid, screen)
+            if new_block:
+                update_pos.add(new_block)
         #check to see if the user released the right mouse button
         if event.type == pygame.MOUSEBUTTONUP and mouse_down2 == 1:
             mouse_down2 = 0

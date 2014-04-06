@@ -25,5 +25,5 @@ def place_blocks(mpos, block_type, the_grid, screen):
         if the_grid.pos[x][y].block == 'Block':
             #block type blocks do not get transposed
             the_grid.pos[x][y].density = None
-            screen.set_at((x,y), GREY)            
+            screen.set_at((x,y), GREY)    
         return rv
