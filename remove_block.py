@@ -14,11 +14,7 @@ def remove_blocks(mpos, the_grid, screen):
     if the_grid.pos[x][y].block != 'None' and y>0 and x<len(the_grid.pos) and x>0 and y<len(the_grid.pos[0]):
         #that position now contains nothing
         the_grid.pos[x][y].block = 'None'
-        #change in block type could require updating of other blocks
-        """
-        update_pos.append([x,y-1])
-        update_pos.append([x+1,y-1])
-        update_pos.append([x-1,y-1])"""
+
         #set density
         the_grid.pos[x][y].density = 0
         #change color
