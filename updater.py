@@ -18,7 +18,7 @@ def update(the_grid, screen, update_pos):
                 new_update_pos.append(moved_sand)
 
         #don't bother updating nothing
-        if the_grid.pos[x][y].block == 'None':
+        elif the_grid.pos[x][y].block == 'None':
             remove_update_pos.append(point)
 
         #don't bother updating block
@@ -27,10 +27,12 @@ def update(the_grid, screen, update_pos):
    
     #adds the new values that need to be update and
     #removes the values that intersect between update_pos and remove_update_pos
-    for new_point in new_update_pos:
-        update_pos.add(new_point)
+
     for old_point in remove_update_pos:
         update_pos.remove(old_point)
+
+    for new_point in new_update_pos:
+        update_pos.add(new_point)
 
     pygame.display.update()
 

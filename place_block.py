@@ -14,7 +14,6 @@ def place_blocks(mpos, block_type, the_grid, screen):
     if the_grid.pos[x][y].block == 'None':
         #that position now contains whatever block type was selected at the time
         the_grid.pos[x][y].block = block_type
-        rv = (x,y)
 
         #update that position to contain sand
         if the_grid.pos[x][y].block == 'Sand':
@@ -26,4 +25,4 @@ def place_blocks(mpos, block_type, the_grid, screen):
             #block type blocks do not get transposed
             the_grid.pos[x][y].density = None
             screen.set_at((x,y), GREY)    
-        return rv
+        return (x, y)

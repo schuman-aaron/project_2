@@ -21,6 +21,5 @@ def sandphysics(grid, screen, point):
     
     x += random.choice(possible_x_points)
 
-    
     place_blocks((x, y),'Sand', grid, screen)
     return (x, y)
