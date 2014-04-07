@@ -39,13 +39,10 @@ class grid_element:
 
 class grid:
     def __init__(self, screen_size,screen, GREY):
-<<<<<<< HEAD
-        y = screen_size[1]
-        x = screen_size[0]
-=======
+
         y = screen_size[1] // 2
         x = screen_size[0] // 2
->>>>>>> TwoPixelWidth
+
         self.pos = list()
         #to get a certain position and attribute call for grid.pos[x][y].attribute
         for i in range(x):
@@ -83,11 +80,8 @@ while not done:
             elif event.button == 3:
                 mouse_down2 = 1
         #check to see if the user released the left mouse button
-<<<<<<< HEAD
-        if event.type == pygame.MOUSEBUTTONUP and event.button == 1:           
-=======
+
         if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
->>>>>>> TwoPixelWidth
             mouse_down1 = 0
         #if the b button is pressed then change block type
         if event.type == pygame.KEYDOWN and event.key == pygame.K_b:
@@ -116,10 +110,7 @@ while not done:
     update(the_grid, screen, update_pos)
 
     # Limit to 60 frames per second
-<<<<<<< HEAD
+
     clock.tick(60)
-=======
-    clock.tick(100)
->>>>>>> TwoPixelWidth
 
 pygame.quit
