@@ -17,4 +17,4 @@ The controls to operate the game:
             -Sand
             -Block
             
-After placing sand the blocks will fall in real-time and stack up similarly to real sand.
+After placing sand the blocks will fall in real-time and stack up similarly to real sand

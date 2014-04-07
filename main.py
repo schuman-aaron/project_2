@@ -1,4 +1,5 @@
 import pygame
+from setcolor import set_color
 from place_block import place_blocks
 from remove_block import remove_blocks
 from updater import update
@@ -38,8 +39,13 @@ class grid_element:
 
 class grid:
     def __init__(self, screen_size,screen, GREY):
+<<<<<<< HEAD
         y = screen_size[1]
         x = screen_size[0]
+=======
+        y = screen_size[1] // 2
+        x = screen_size[0] // 2
+>>>>>>> TwoPixelWidth
         self.pos = list()
         #to get a certain position and attribute call for grid.pos[x][y].attribute
         for i in range(x):
@@ -49,9 +55,9 @@ class grid:
                 # set up attributes of the grid element
                 self.pos[i].append(elt)
                 #setup a block barrier around the screen
-                if j==0 or i==0 or j==screen_size[1]-1 or i == screen_size[0]:
+                if j==0 or i==0 or j== y-1 or i == x-1:
                     self.pos[i][j].block = 'Block'
-                    screen.set_at((i,j), GREY)
+                    set_color(screen, GREY, (i,j))
 
 #initialize the grid
 the_grid = grid(size,screen, GREY)
@@ -69,6 +75,7 @@ while not done:
             done = True # Flag that we are done so we exit this loop
             break
         mpos = pygame.mouse.get_pos()
+        mpos = (mpos[0] // 2, mpos[1] //2)
         #check to see if the user left or right clicked
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
@@ -76,7 +83,11 @@ while not done:
             elif event.button == 3:
                 mouse_down2 = 1
         #check to see if the user released the left mouse button
+<<<<<<< HEAD
         if event.type == pygame.MOUSEBUTTONUP and event.button == 1:           
+=======
+        if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+>>>>>>> TwoPixelWidth
             mouse_down1 = 0
         #if the b button is pressed then change block type
         if event.type == pygame.KEYDOWN and event.key == pygame.K_b:
@@ -105,6 +116,10 @@ while not done:
     update(the_grid, screen, update_pos)
 
     # Limit to 60 frames per second
+<<<<<<< HEAD
     clock.tick(60)
+=======
+    clock.tick(100)
+>>>>>>> TwoPixelWidth
 
 pygame.quit
