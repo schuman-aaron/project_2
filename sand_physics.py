@@ -4,20 +4,13 @@ from remove_block import remove_blocks
 from check_blocks import check_above
 
 def sandphysics(grid, screen, point, block_type):
-    x = point[0] - 1   # x-value to the left of the block
-    y = point[1] + 1   # y-value below the block
+    x = point[0] - 1 # x-value to the left of the block
+    y = point[1] + 1 # y-value below the block
     possible_x_points = []
-    switch_sands = 0
 
     for i in range(3):
-        if grid.pos[x + i][y].block == 'None':
+        if grid.pos[x + i][y].density < grid.pos[point[0]][point[1]].density:
             possible_x_points.append(i)
-
-    if block_type == 'Heavy Sand' and not possible_x_points:
-        switch_sands = 1
-        for i in range(3):
-            if grid.pos[x + i][y].block == 'Sand':
-                possible_x_points.append(i)
 
     if not possible_x_points:
         return [], point
@@ -28,9 +21,10 @@ def sandphysics(grid, screen, point, block_type):
 
     x += random.choice(possible_x_points)
 
-    if switch_sands:
-        place_blocks(point,'Sand', grid, screen)
-        remove_blocks((x, y), grid, screen)
+    block_below = grid.pos[x][y].block
+
+    place_blocks(point,block_below, grid, screen)
+    remove_blocks((x, y), grid, screen)
 
     place_blocks((x, y),block_type , grid, screen)
     update_blocks.append((x, y))
