@@ -87,6 +87,8 @@ while not done:
         if event.type == pygame.KEYDOWN and event.key == pygame.K_b:
             if block_type == 'Sand':
                 block_type = 'Block'
+            elif block_type == 'Block':
+                block_type = 'Heavy Sand'
             else:
                 block_type = 'Sand'
         #check to see if the user released the right mouse button
@@ -94,15 +96,26 @@ while not done:
             mouse_down2 = 0
     #left mouse button is being held down
     if mouse_down1 == 1:
-        new_block = place_blocks(mpos, block_type, the_grid, screen)
-        if new_block:
-            update_pos.add(new_block)
+        if block_type == 'Block':
+            for i in range(2):
+                for j in range(2):
+                    point = (mpos[0] + i, mpos[1] + j)
+                    new_block = place_blocks(point, block_type, the_grid, screen)
+                    if new_block:
+                        update_pos.add(new_block)
+        else:
+            new_sand = place_blocks(mpos, block_type, the_grid, screen)
+            if new_sand:
+                update_pos.add(new_sand)
         #right mouse button is being held down
     if mouse_down2 == 1:
-        update_blocks = remove_blocks(mpos, the_grid, screen)
-        if update_blocks:
-            for block in update_blocks:
-                update_pos.add(block)
+        for i in range(2):
+            for j in range(2):
+                point = (mpos[0] + i, mpos[1] + j)
+                update_blocks = remove_blocks(point, the_grid, screen)
+                if update_blocks:
+                    for block in update_blocks:
+                        update_pos.add(block)
         #illegal mouse operation, reset left and right mouse button is down variables
         #note: without this placing blocks would become slower and slower
         #each time the operation is executed

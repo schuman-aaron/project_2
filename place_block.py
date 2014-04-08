@@ -11,6 +11,8 @@ GREY = (200,200,200)
 def place_blocks(mpos, block_type, the_grid, screen):
     x = mpos[0]
     y = mpos[1]
+    if x >= len(the_grid.pos) - 1 or y >= len(the_grid.pos[0]) - 1:
+        return None
     #if the position the user clicked on is empty
     if the_grid.pos[x][y].block == 'None':
         #that position now contains whatever block type was selected at the time
@@ -19,13 +21,16 @@ def place_blocks(mpos, block_type, the_grid, screen):
         #update that position to contain sand
         if the_grid.pos[x][y].block == 'Sand':
             the_grid.pos[x][y].density = 1
-            #screen.set_at((x,y), TAN)
             set_color(screen, TAN, (x, y))
 
         #update that position to contain block
         if the_grid.pos[x][y].block == 'Block':
             #block type blocks do not get transposed
-            the_grid.pos[x][y].density = None
-            #screen.set_at((x,y), GREY)    
+            the_grid.pos[x][y].density = None    
             set_color(screen, GREY, (x,y))
+
+        #update that position to contain sand
+        if the_grid.pos[x][y].block == 'Heavy Sand':
+            the_grid.pos[x][y].density = 2
+            set_color(screen, RED, (x, y))
         return (x, y)
