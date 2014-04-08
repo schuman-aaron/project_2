@@ -1,6 +1,7 @@
 import random
 from place_block import place_blocks
 from remove_block import remove_blocks
+from check_blocks import check_above
 
 def sandphysics(grid, screen, point):
     x = point[0] - 1   # x-value to the left of the block
@@ -12,14 +13,14 @@ def sandphysics(grid, screen, point):
             possible_x_points.append(i)
 
     if not possible_x_points:
-        return None
+        return [], point
 
-    
-    #temp_list = list()    
     #remove original point first
-    remove_blocks((point[0], point[1]), grid, screen)
-    
+    remove_blocks(point, grid, screen)
+    update_blocks = check_above(point, grid)
+
     x += random.choice(possible_x_points)
 
     place_blocks((x, y),'Sand', grid, screen)
-    return (x, y)
+    update_blocks.append((x, y))
+    return update_blocks, None

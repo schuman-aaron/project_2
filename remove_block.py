@@ -1,5 +1,6 @@
 import pygame
 from setcolor import set_color
+from check_blocks import check_above
 
 BLACK = ( 0, 0, 0)
 WHITE = ( 255, 255, 255)
@@ -19,5 +20,5 @@ def remove_blocks(mpos, the_grid, screen):
         #set density
         the_grid.pos[x][y].density = 0
         #change color
-        #screen.set_at((x,y), BLACK)
         set_color(screen, BLACK, (x,y))
+        return check_above((x, y), the_grid)

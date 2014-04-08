@@ -99,7 +99,10 @@ while not done:
             update_pos.add(new_block)
         #right mouse button is being held down
     if mouse_down2 == 1:
-        remove_blocks(mpos, the_grid, screen)
+        update_blocks = remove_blocks(mpos, the_grid, screen)
+        if update_blocks:
+            for block in update_blocks:
+                update_pos.add(block)
         #illegal mouse operation, reset left and right mouse button is down variables
         #note: without this placing blocks would become slower and slower
         #each time the operation is executed
@@ -111,6 +114,6 @@ while not done:
 
     # Limit to 60 frames per second
 
-    clock.tick(60)
+    clock.tick(400)
 
 pygame.quit

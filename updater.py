@@ -13,9 +13,11 @@ def update(the_grid, screen, update_pos):
         #if marked for being sand
         if the_grid.pos[x][y].block == 'Sand':
             #update each individual positions of sand blocks
-            moved_sand = sandphysics(the_grid, screen, point)
-            if moved_sand != None:
-                new_update_pos.append(moved_sand)
+            moved_sand, stopped_sand = sandphysics(the_grid, screen, point)
+            for sand_block in moved_sand:
+                new_update_pos.append(sand_block)
+            if stopped_sand:
+                remove_update_pos.append(stopped_sand)
 
         #don't bother updating nothing
         elif the_grid.pos[x][y].block == 'None':
