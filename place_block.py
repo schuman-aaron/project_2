@@ -7,6 +7,7 @@ GREEN = ( 0, 255, 0)
 RED = ( 255, 0, 0)
 TAN = (250, 230, 140)
 GREY = (200,200,200)
+LGREY = (100,100,100)
 
 def place_blocks(mpos, block_type, the_grid, screen):
     x = mpos[0]
@@ -26,11 +27,11 @@ def place_blocks(mpos, block_type, the_grid, screen):
         #update that position to contain block
         if the_grid.pos[x][y].block == 'Block':
             #block type blocks do not get transposed
-            the_grid.pos[x][y].density = None    
+            the_grid.pos[x][y].density = 99
             set_color(screen, GREY, (x,y))
 
         #update that position to contain sand
-        if the_grid.pos[x][y].block == 'Heavy Sand':
+        if the_grid.pos[x][y].block == 'Stone':
             the_grid.pos[x][y].density = 2
-            set_color(screen, RED, (x, y))
+            set_color(screen, LGREY, (x, y))
         return (x, y)
