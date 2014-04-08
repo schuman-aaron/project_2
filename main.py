@@ -10,6 +10,7 @@ GREEN = ( 0, 255, 0)
 RED = ( 255, 0, 0)
 TAN = (250, 230, 140)
 GREY = (200,200,200)
+LGREY = (200,200,200)
 
 pygame.init()
 
@@ -54,6 +55,7 @@ class grid:
                 #setup a block barrier around the screen
                 if j==0 or i==0 or j== y-1 or i == x-1:
                     self.pos[i][j].block = 'Block'
+                    self.pos[i][j].density = 99
                     set_color(screen, GREY, (i,j))
 
 #initialize the grid
@@ -88,7 +90,7 @@ while not done:
             if block_type == 'Sand':
                 block_type = 'Block'
             elif block_type == 'Block':
-                block_type = 'Heavy Sand'
+                block_type = 'Stone'
             else:
                 block_type = 'Sand'
         #check to see if the user released the right mouse button
@@ -125,7 +127,7 @@ while not done:
     #update function
     update(the_grid, screen, update_pos)
 
-    # Limit to 60 frames per second
+    # Limit to X frames per second
 
     clock.tick(400)
 
