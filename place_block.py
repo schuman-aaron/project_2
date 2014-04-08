@@ -11,6 +11,10 @@ GREY = (200,200,200)
 def place_blocks(mpos, block_type, the_grid, screen):
     x = mpos[0]
     y = mpos[1]
+    
+    if x >= len(the_grid.pos) - 1 or y >= len(the_grid.pos[0]) - 1:
+    return None
+    
     #if the position the user clicked on is empty
     if the_grid.pos[x][y].block == 'None':
         #that position now contains whatever block type was selected at the time
