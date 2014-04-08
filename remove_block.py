@@ -12,8 +12,11 @@ GREY = (200,200,200)
 def remove_blocks(mpos, the_grid, screen):
     x = mpos[0]
     y = mpos[1]
+
+    if x >= len(the_grid.pos) - 1 or y >= len(the_grid.pos[0]) - 1:
+        return None
     #the position the user clicked on is not empty and within boundary
-    if the_grid.pos[x][y].block != 'None' and y>0 and x<len(the_grid.pos)-1 and x>0 and y<len(the_grid.pos[0])-1:
+    if the_grid.pos[x][y].block != 'None' and y>0 and x>0:
         #that position now contains nothing
         the_grid.pos[x][y].block = 'None'
 
