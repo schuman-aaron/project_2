@@ -13,7 +13,7 @@ def place_blocks(mpos, block_type, the_grid, screen):
     y = mpos[1]
     
     if x >= len(the_grid.pos) - 1 or y >= len(the_grid.pos[0]) - 1:
-    return None
+        return None
     
     #if the position the user clicked on is empty
     if the_grid.pos[x][y].block == 'None':
