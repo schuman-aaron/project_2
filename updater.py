@@ -11,7 +11,7 @@ def update(the_grid, screen, update_pos):
         y = point[1]
 
         #if marked for being sand
-        if the_grid.pos[x][y].block == 'Sand' or the_grid.pos[x][y].block == 'Heavy Sand':
+        if the_grid.pos[x][y].block == 'Sand' or the_grid.pos[x][y].block == 'Stone':
             #update each individual positions of sand blocks
             moved_sand, stopped_sand = sandphysics(the_grid, screen, point, the_grid.pos[x][y].block)
             for sand_block in moved_sand:
@@ -37,9 +37,3 @@ def update(the_grid, screen, update_pos):
         update_pos.add(new_point)
 
     pygame.display.update()
-
-
-
-
-
-
