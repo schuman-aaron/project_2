@@ -1,6 +1,11 @@
 import pygame
 
 def set_color(screen, color, point):
+    """
+    Change the color of a tile by looping to change the color of the
+    four pixels.
+    """
+    
     x = point[0] * 2
     y = point[1] * 2
     
