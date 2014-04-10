@@ -12,9 +12,10 @@ The controls to operate the game:
     -Right Mouse Button:
         Remove currently selected block at location of the mouse
         
-    -'B' key:
+    -'b' key:
         Change block type, current block types:
             -Sand
             -Block
+            -Stone
             
 After placing sand the blocks will fall in real-time and stack up similarly to real sand
