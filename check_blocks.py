@@ -5,10 +5,10 @@ def check_above(point, grid):
     Returns a list that contains the coordinates for the movable blocks.
     """
     movable_block = []
-    
+
     x = point[0] - 1  # block to the left of 'point'
     y = point[1] - 1  # block above 'point'
-    
+
     # loop and add the coordinates to a list if the block type isn't 'None' or 'Block'
     for i in range(3):
         block_type = grid.pos[x + i][y].block

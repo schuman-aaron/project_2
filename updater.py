@@ -10,7 +10,7 @@ def update(the_grid, screen, update_pos):
     """
     new_update_pos = list()
     remove_update_pos = list()
-    
+
     #look at every value that needs to be updated
     for point in update_pos:
         # coordinates of the block
@@ -21,22 +21,22 @@ def update(the_grid, screen, update_pos):
         if the_grid.pos[x][y].block == 'Sand' or the_grid.pos[x][y].block == 'Stone':
             #update each individual positions of sand blocks
             moved_sand, stopped_sand = sandphysics(the_grid, screen, point, the_grid.pos[x][y].block)
-            
+
             for sand_block in moved_sand:
                 new_update_pos.append(sand_block)
-                
+
             if stopped_sand:
                 remove_update_pos.append(stopped_sand)
 
-        # don't bother updating nothing
+        #don't bother updating nothing
         elif the_grid.pos[x][y].block == 'None':
             remove_update_pos.append(point)
 
-        # don't bother updating block
+        #don't bother updating block
         elif the_grid.pos[x][y].block == 'Block':
             remove_update_pos.append(point)
 
-    # removes the values that intersect between update_pos and remove_update_pos
+    # removes the values that intersect between 'update_pos' and 'remove_update_pos'
     for old_point in remove_update_pos:
         update_pos.remove(old_point)
 
@@ -44,9 +44,4 @@ def update(the_grid, screen, update_pos):
     for new_point in new_update_pos:
         update_pos.add(new_point)
 
-    pygame.display
-
-
-
-
-
+    pygame.display.update()
