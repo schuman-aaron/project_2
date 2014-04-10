@@ -4,6 +4,7 @@ project_2
 Falling Sand Game:
 
 In order to run the Falling Sand Game, pygame will be need to be downloaded.
+Run it with the command: python3 main.py
 
 The controls to operate the game:
     -Left Mouse Button:
