@@ -1,5 +1,8 @@
 project_2
 ============
+By: Aaron Schuman 1353479
+    Hanson Le
+
 
 Falling Sand Game:
 
